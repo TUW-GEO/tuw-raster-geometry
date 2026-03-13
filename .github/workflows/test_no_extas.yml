@@ -1,0 +1,29 @@
+name: Test no extras
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_no_extras:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: 3.10
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install the Project
+        run: uv sync --locked --no-extras --dev
+
+      - name: Run Tests
+        run: |
+          uv run pytest tests --verbose --color=yes --cov=tuw_raster_geometry --cov-report term-missing
+

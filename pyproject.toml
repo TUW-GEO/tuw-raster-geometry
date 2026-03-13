@@ -5,7 +5,9 @@ version = "0.1.0"
 description = "Contains geometry classes for common raster operations."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "numpy",
+]
 classifiers = [
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering",
@@ -22,6 +24,17 @@ classifiers = [
 ]
 [project.urls]
 Repository = "https://github.com/TUW-GEO/tuw-raster-geometry"
+
+[project.optional-dependencies]
+rasterio = [
+    "rasterio",
+]
+dask = [
+    "dask",
+]
+pytileproj = [
+    "pytileproj",
+]
 
 [build-system]
 requires = ["uv_build>=0.9.17,<0.10.0"]
