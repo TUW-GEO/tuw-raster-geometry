@@ -1,0 +1,46 @@
+[project]
+authors = [{ name = "TU Wien GEO RS Group", email = "remote.sensing@geo.tuwien.ac.at" }]
+name = "tuw_raster_geometry"
+version = "0.1.0"
+description = "Contains geometry classes for common raster operations."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Software Development :: Libraries",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: POSIX",
+    "Natural Language :: English",
+]
+[project.urls]
+Repository = "https://github.com/TUW-GEO/tuw-raster-geometry"
+
+[build-system]
+requires = ["uv_build>=0.9.17,<0.10.0"]
+build-backend = "uv_build"
+
+
+[dependency-groups]
+# Unlike optional dependencies, development dependencies are local-only
+# and will not be included in the project requirements when
+# published to PyPI or other indexes
+dev = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+]
+
+
+
+[tool.pytest.ini_options]
+addopts = "--cov=tuw_raster_geometry --cov-report term-missing -rsx --verbose --color=yes"
+
+[tool.coverage.run]
+relative_files = true
