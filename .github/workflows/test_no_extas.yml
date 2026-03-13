@@ -21,7 +21,7 @@ jobs:
         run: uv python install
 
       - name: Install the Project
-        run: uv sync --locked --no-extra --dev
+        run: uv sync --locked --dev
 
       - name: Run Tests
         run: |
