@@ -33,5 +33,9 @@ class GeogExtent(BaseModel):
         return self.lon_west, self.lat_south, self.lon_east, self.lat_north
 
     def expand(self, amount: float) -> "GeogExtent":
-        return GeogExtent(lat_south=self.lat_south - amount, lat_north=self.lat_north + amount,
-                          lon_west=self.lon_west - amount, lon_east=self.lon_east + amount)
+        return GeogExtent(
+            lat_south=(self.lat_south - amount + 90) % 180 - 90,
+            lat_north=(self.lat_north + amount + 90) % 180 - 90,
+            lon_west=(self.lon_west - amount + 180) % 360 - 180,
+            lon_east=(self.lon_east + amount + 180) % 360 - 180,
+        )

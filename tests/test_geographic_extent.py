@@ -32,13 +32,29 @@ def test_covers_antimeridian():
 
 
 def test_expand():
-    expanded = GeogExtent(lat_south=20, lat_north=30, lon_west=20, lon_east=30).expand(0.2)
-    assert expanded == GeogExtent(lat_south=19.8, lat_north=30.2, lon_west=19.8, lon_east=30.2)
+    expanded = GeogExtent(lat_south=20, lat_north=30, lon_west=20, lon_east=30).expand(0.5)
+    assert expanded == GeogExtent(lat_south=19.5, lat_north=30.5, lon_west=19.5, lon_east=30.5)
 
 
 def test_expand_over_antimeridian():
-    expanded = GeogExtent(lat_south=20, lat_north=30, lon_west=179, lon_east=-179).expand(0.2)
-    assert expanded == GeogExtent(lat_south=19.8, lat_north=30.2, lon_west=178.8, lon_east=-178.8)
+    expanded = GeogExtent(lat_south=20, lat_north=30, lon_west=179, lon_east=-179).expand(0.5)
+    assert expanded == GeogExtent(lat_south=19.5, lat_north=30.5, lon_west=178.5, lon_east=-178.5)
+
+
+def test_wrap_around_longitudes_during_expansion():
+    extended = GeogExtent(lat_south=20, lat_north=30, lon_west=179, lon_east=180).expand(1.0)
+    assert extended == GeogExtent(lat_south=19, lat_north=31, lon_west=178, lon_east=-179)
+    assert extended.covers_antimeridian
+    extended = GeogExtent(lat_south=20, lat_north=30, lon_west=-180, lon_east=-179).expand(1.0)
+    assert extended == GeogExtent(lat_south=19, lat_north=31, lon_west=179, lon_east=-178)
+    assert extended.covers_antimeridian
+
+
+def test_wrap_around_latitudes_during_expansion():
+    extended = GeogExtent(lat_south=-90, lat_north=-80, lon_west=-5, lon_east=5).expand(1.0)
+    assert extended == GeogExtent(lat_south=89, lat_north=-79, lon_west=-6, lon_east=6)
+    extended = GeogExtent(lat_south=80, lat_north=90, lon_west=-5, lon_east=5).expand(1.0)
+    assert extended == GeogExtent(lat_south=79, lat_north=-89, lon_west=-6, lon_east=6)
 
 
 def test_make_from_west_south_east_north():
