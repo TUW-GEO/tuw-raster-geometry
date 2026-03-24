@@ -1377,7 +1377,7 @@ wheels = [
 
 [[package]]
 name = "tuw-raster-geometry"
-version = "1.0.0"
+version = "1.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://git.eodc.eu/api/v4/groups/10/-/packages/pypi/simple/" }, marker = "python_full_version < '3.11'" },
