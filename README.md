@@ -6,11 +6,12 @@
 |----------------------------------------------- | -------: | -------: | ------: | --------: |
 | src/tuw\_raster\_geometry/\_\_init\_\_.py      |        5 |        1 |     80% |        11 |
 | src/tuw\_raster\_geometry/common\_types.py     |        3 |        0 |    100% |           |
+| src/tuw\_raster\_geometry/geographic.py        |       22 |        0 |    100% |           |
 | src/tuw\_raster\_geometry/optional\_modules.py |       30 |       14 |     53% |3, 6, 11, 20-26, 33-37, 44-48 |
 | src/tuw\_raster\_geometry/pixel.py             |       33 |        0 |    100% |           |
 | src/tuw\_raster\_geometry/projected.py         |        9 |        2 |     78% |    12, 15 |
 | src/tuw\_raster\_geometry/tile\_operations.py  |       13 |        0 |    100% |           |
-| **TOTAL**                                      |   **93** |   **17** | **82%** |           |
+| **TOTAL**                                      |  **115** |   **17** | **85%** |           |
 
 
 ## Setup coverage badge
